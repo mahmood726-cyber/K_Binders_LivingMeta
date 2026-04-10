@@ -486,7 +486,7 @@
         <button onclick="RapidMeta.switchTab('analysis')" class="tab-btn h-full text-sm font-medium text-slate-400 hover:text-white transition-all duration-200 border-b-2 border-transparent" data-tab="analysis" role="tab" aria-selected="false" aria-controls="tab-analysis" id="btn-tab-analysis">5. Analysis Suite</button>
         <button onclick="RapidMeta.switchTab('report')" class="tab-btn h-full text-sm font-medium text-purple-400 hover:text-purple-300 transition-all duration-200 border-b-2 border-transparent" data-tab="report" role="tab" aria-selected="false" aria-controls="tab-report" id="btn-tab-report">6. Scientific Output</button>
         <button onclick="RapidMeta.switchTab('nma')" class="tab-btn h-full text-sm font-medium text-cyan-400 hover:text-cyan-300 transition-all duration-200 border-b-2 border-transparent" data-tab="nma" role="tab" aria-selected="false" aria-controls="tab-nma" id="btn-tab-nma" style="display:none">7. NMA</button>
-        <button onclick="RapidMeta.switchTab('doseresponse')" class="tab-btn h-full text-sm font-medium text-rose-400 hover:text-rose-300 transition-all duration-200 border-b-2 border-transparent" data-tab="doseresponse" role="tab" aria-selected="false" aria-controls="tab-doseresponse" id="btn-tab-doseresponse" style="display:none">8. Dose-Response</button>
+        <button onclick="RapidMeta.switchTab('doseresponse')" class="tab-btn h-full text-sm font-medium text-rose-400 hover:text-rose-300 transition-all duration-200 border-b-2 border-transparent" data-tab="doseresponse" role="tab" aria-selected="false" aria-controls="tab-doseresponse" id="btn-tab-doseresponse">8. Dose-Response</button>
     </nav>
 
     <!-- Stale Detection Banner (Task 8: D4) -->
@@ -9181,7 +9181,56 @@
         // ═══════════════════════════════════════════════════════════
         // v16.0: Dose-Response Engine (Emax model via grid search)
         // ═══════════════════════════════════════════════════════════
-        const DR_CONFIG = null; // Populated by generator for dose-response-enabled apps
+        const DR_CONFIG = {
+        "label": "Patiromer Dose-Response (K+ Change at 4 Weeks)",
+        "unit": "g/day",
+        "outcomeLabel": "Mean Change in Serum K+ (mEq/L)",
+        "source": "Bakris et al. JAMA 2015;314:151-161 (AMETHYST-DN)",
+        "doses": [
+                {
+                        "dose": 0,
+                        "effect": 0.01,
+                        "se": 0.06,
+                        "n": 74,
+                        "label": "Placebo"
+                },
+                {
+                        "dose": 4.2,
+                        "effect": -0.35,
+                        "se": 0.07,
+                        "n": 54,
+                        "label": "Patiromer 4.2g BID"
+                },
+                {
+                        "dose": 8.4,
+                        "effect": -0.51,
+                        "se": 0.06,
+                        "n": 54,
+                        "label": "Patiromer 8.4g BID"
+                },
+                {
+                        "dose": 12.6,
+                        "effect": -0.55,
+                        "se": 0.07,
+                        "n": 54,
+                        "label": "Patiromer 12.6g BID"
+                },
+                {
+                        "dose": 16.8,
+                        "effect": -0.72,
+                        "se": 0.07,
+                        "n": 54,
+                        "label": "Patiromer 16.8g BID"
+                },
+                {
+                        "dose": 25.2,
+                        "effect": -0.97,
+                        "se": 0.08,
+                        "n": 54,
+                        "label": "Patiromer 25.2g BID"
+                }
+        ]
+}; // Populated by generator for dose-response-enabled apps
 
         const DoseResponseEngine = {
             _getConfig() {
